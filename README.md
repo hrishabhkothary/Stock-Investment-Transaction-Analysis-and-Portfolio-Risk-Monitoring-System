@@ -169,6 +169,7 @@ A simple version for real-time:
 Example simple loop:
 
 # pseudo-realtime.py
+
 import time
 
 import os
@@ -179,8 +180,10 @@ while True:
         os.system("python load_transactions.py")
         os.system("python update_portfolio.py")
     time.sleep(10)  # check every 10 sec
+    
 
    **OR for Kafka-style:**
+   
 
      -Send each new trade as a message.
 
