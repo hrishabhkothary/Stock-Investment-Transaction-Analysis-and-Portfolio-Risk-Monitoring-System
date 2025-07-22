@@ -58,7 +58,7 @@ The system runs in batch mode (hourly or daily) or can be extended for real-time
 
 **HOW TO RUN:**
 
-1. Clone this repo:
+1. Clone this repo: git clone https://github.com/hrishabhkothary/Stock-Investment-Transaction-Analysis-and-Portfolio-Risk-Monitoring-System.git
 2. The final Project tree should look like:
    
 StockInvestmentProject/
