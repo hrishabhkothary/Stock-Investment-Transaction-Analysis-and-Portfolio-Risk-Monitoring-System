@@ -73,8 +73,8 @@ StockInvestmentProject/
 ├── .gitignore
 └── README.md
 
-3. Install Python packages:
-   (Terminal)
+3. Install Python packages(Terminal):
+   
    pip install -r requirements.txt
 
 4. Setup MySQL DB:
