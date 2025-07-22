@@ -87,17 +87,25 @@ StockInvestmentProject/
    Creates tables: investors, transactions, portfolios.
 
 5. Add a dummy CSV (one time)
+6. 
    Make sure transactions.csv exists(already existing in folder).
+   
    OR Run,
+   
    python generate_dummy_data.py
+   
    This will create a big file (transactions.csv with 10,000+ rows).
 
-6. Load transactions into DB:
+8. Load transactions into DB:
+   
    Run,
+   
    python load_transactions.py
 
-8. Update portfolios:
+10. Update portfolios:
+    
    Run,
+   
    python update_portfolio.py
 
    **This:**
@@ -106,11 +114,14 @@ StockInvestmentProject/
      Stores it in portfolios.
 
 
-9. Analyze and Visualize:
+11. Analyze and Visualize:
+    
    Run,
+   
    python analyze.py
 
    **This:**
+   
     Pulls portfolios data.
     Plots a bar chart with seaborn.
     Opens a window so you see who owns what stocks.
@@ -118,14 +129,18 @@ StockInvestmentProject/
 
 
 **✅Batch Mode**
+
 In Batch Mode, you run the ETL automatically at intervals (like hourly).
 
 How to do it?
-1️⃣ Open terminal:
+
+1. Open terminal:
+   
 Run,
+
 crontab -e
 
-2️⃣ Add:
+2️. Add:
 
 
 0 * * * * /usr/bin/python3 /path/to/StockInvestmentProject/load_transactions.py    (# Run loader every hour)
