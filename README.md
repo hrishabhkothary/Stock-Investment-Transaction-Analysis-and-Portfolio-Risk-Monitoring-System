@@ -29,3 +29,20 @@ Can extend this pipeline for deeper portfolio performance analysis, profit/loss 
 4. Automation benefit:
 The system runs in batch mode (hourly or daily) or can be extended for real-time, just like production-grade trading systems.
 
+
+
+✅ Technologies Used & How:
+
+| 📌 **Technology**                                  | 🔍 **What it’s used for**                                                                                     |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Python**                                         | Core scripting language for ETL (Extract, Transform, Load), data generation, analytics, automation            |
+| **Python Libraries (pandas, seaborn, matplotlib)** | 'pandas' handles CSVs & DB data; `seaborn` & `matplotlib` visualize investor portfolios                       |
+| **SQLAlchemy + PyMySQL**                           | Python ORM + MySQL connector: they connect Python code to MySQL securely                                      |
+| **MySQL**                                          | Relational database to store transactions & portfolios; handles advanced 'JOIN's & 'SUBQUERY' operations      |
+| **SQL Joins & Subqueries**                         | Used to aggregate raw trade data into investor-level summaries (total holdings, average prices, risk scoring) |
+| **Batch Scheduling (cron)**                        | Automates ETL to run periodically, simulating real-time trade settlement pipelines                            |
+| **Real-Time Option (File Watcher or Kafka)**       | Extends the batch process to detect new trades and process instantly                                          |
+
+
+
+
