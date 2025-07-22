@@ -1,0 +1,19 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore IDE/editor settings
+.vscode/
+.idea/
+
+# Ignore environment files
+.env
+
+# Ignore database dump files
+*.sql
+
+# Ignore OS junk
+.DS_Store
+
+# Ignore large generated data files (optional)
+transactions.csv
