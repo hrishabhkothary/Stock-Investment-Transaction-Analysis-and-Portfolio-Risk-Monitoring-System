@@ -1,6 +1,6 @@
 HOW TO RUN:
 
-Clone this repo:
+Clone this repo: git clone https://github.com/hrishabhkothary/Stock-Investment-Transaction-Analysis-and-Portfolio-Risk-Monitoring-System.git
 The final Project tree should look like:
 StockInvestmentProject/ │ ├── db_config.py ├── create_tables.sql ├── generate_dummy_data.py ├── transactions.csv ├── load_transactions.py ├── update_portfolio.py ├── analyze.py ├── requirements.txt ├── .gitignore └── README.md
 
