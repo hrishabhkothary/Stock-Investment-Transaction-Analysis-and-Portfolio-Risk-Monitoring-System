@@ -6,6 +6,7 @@
 This project simulates a complete electronic stock investment system for financial institutions and retail brokers.
 
 **It does three main things:**
+
 1️. Simulates real-time stock transactions:
 It generates large, realistic trade data — thousands of buys and sells — for multiple investors and stocks.
 
