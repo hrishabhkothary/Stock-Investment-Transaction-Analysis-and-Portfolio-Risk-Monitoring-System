@@ -13,7 +13,7 @@ It generates large, realistic trade data — thousands of buys and sells — for
 It ingests these transactions, stores them in a relational database (MySQL), and runs advanced SQL logic (joins, subqueries) to aggregate data into investor portfolios.
 
 3️. Provides insights and monitoring:
-It calculates each investor’s total holdings, average buy prices, and assigns basic risk scores. It visualizes this data to help detect unusual trading activity or concentrated risk.
+It calculates each investor's total holdings, average buy prices, and assigns basic risk scores. It visualizes this data to help detect unusual trading activity or concentrated risk.
 
 **How it may help institutions:**
 
@@ -42,6 +42,85 @@ The system runs in batch mode (hourly or daily) or can be extended for real-time
 | **SQL Joins & Subqueries**                         | Used to aggregate raw trade data into investor-level summaries (total holdings, average prices, risk scoring) |
 | **Batch Scheduling (cron)**                        | Automates ETL to run periodically, simulating real-time trade settlement pipelines                            |
 | **Real-Time Option (File Watcher or Kafka)**       | Extends the batch process to detect new trades and process instantly                                          |
+
+
+**Key Industrial Features:**
+✔ Big data simulation: Generates 10,000+ realistic trade records.
+✔ Production-style ETL: Structured pipelines for ingestion, transformation, and storage.
+✔ Data integrity: Uses foreign keys & schema design to enforce consistency.
+✔ SQL optimization: Leverages JOIN and CASE WHEN for conditional calculations.
+✔ Risk scoring: Demonstrates how institutions may flag large or unusual positions.
+✔ Automation-ready: Runs in batch or real-time.
+✔ Visual dashboard: Investors' positions are visualized, helping detect trends or anomalies.
+
+
+
+**HOW TO RUN:**
+
+1. Clone this repo:
+2. The final Project tree should look like:
+   
+StockInvestmentProject/
+│
+├── db_config.py
+├── create_tables.sql
+├── generate_dummy_data.py
+├── transactions.csv
+├── load_transactions.py
+├── update_portfolio.py
+├── analyze.py
+├── requirements.txt
+├── .gitignore
+└── README.md
+
+3. Install Python packages:
+   (Terminal)
+   pip install -r requirements.txt
+
+4. Setup MySQL DB:
+   Open terminal:
+   mysql -u root -p < create_tables.sql
+   
+   **This:**
+   Creates your stock_investments DB
+   Creates tables: investors, transactions, portfolios.
+
+5. Add a dummy CSV (one time)
+   Make sure transactions.csv exists(already existing in folder).
+   OR Run,
+   python generate_dummy_data.py
+   This will create a big file (transactions.csv with 10,000+ rows).
+
+6. Load transactions into DB:
+   Run,
+   python load_transactions.py
+
+8. Update portfolios:
+   Run,
+   python update_portfolio.py
+
+   **This:**
+     Runs a JOIN & subquery.
+     Calculates total quantity, average buy price, risk score.
+     Stores it in portfolios.
+
+
+9. Analyze and Visualize:
+   Run,
+   python analyze.py
+
+   **This:**
+    Pulls portfolios data.
+    Plots a bar chart with seaborn.
+    Opens a window so you see who owns what stocks.
+
+
+
+
+
+
+
+
 
 
 
