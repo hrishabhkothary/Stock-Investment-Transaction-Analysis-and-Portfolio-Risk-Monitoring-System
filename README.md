@@ -80,6 +80,7 @@ StockInvestmentProject/
 
 4. Setup MySQL DB:
    Open terminal:
+   
    mysql -u root -p < create_tables.sql
    
    **This:**
@@ -87,7 +88,7 @@ StockInvestmentProject/
    Creates tables: investors, transactions, portfolios.
 
 5. Add a dummy CSV (one time)
-6. 
+   
    Make sure transactions.csv exists(already existing in folder).
    
    OR Run,
@@ -96,13 +97,13 @@ StockInvestmentProject/
    
    This will create a big file (transactions.csv with 10,000+ rows).
 
-8. Load transactions into DB:
+6. Load transactions into DB:
    
    Run,
    
    python load_transactions.py
 
-10. Update portfolios:
+7. Update portfolios:
     
    Run,
    
@@ -114,7 +115,7 @@ StockInvestmentProject/
      Stores it in portfolios.
 
 
-11. Analyze and Visualize:
+8. Analyze and Visualize:
     
    Run,
    
