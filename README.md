@@ -116,6 +116,59 @@ StockInvestmentProject/
 
 
 
+**✅Batch Mode**
+In Batch Mode, you run the ETL automatically at intervals (like hourly).
+
+How to do it?
+1️⃣ Open terminal:
+Run,
+crontab -e
+
+2️⃣ Add:
+
+
+0 * * * * /usr/bin/python3 /path/to/StockInvestmentProject/load_transactions.py    (# Run loader every hour)
+
+
+5 * * * * /usr/bin/python3 /path/to/StockInvestmentProject/update_portfolio.py      (# Run updater every hour, 5 mins later)
+
+**This:**
+
+Loads new transactions hourly.
+Updates portfolios hourly.
+
+
+
+**✅Real-Time Mode**
+Batch means “process all at once, on schedule”.
+Real-time means “process each new trade immediately”.
+
+A simple version for real-time:
+
+-Use watchdog (a Python library) to monitor a folder for a new CSV.
+
+-Or connect to a message broker (Kafka, RabbitMQ, etc).
+
+Example simple loop:
+
+# pseudo-realtime.py
+import time
+import os
+
+while True:
+    if os.path.exists("transactions.csv"):
+        os.system("python load_transactions.py")
+        os.system("python update_portfolio.py")
+    time.sleep(10)  # check every 10 sec
+
+   **OR for Kafka-style:**
+
+     -Send each new trade as a message.
+
+     -Have a Python consumer that runs update_portfolio.py instantly.
+
+
+
 
 
 
