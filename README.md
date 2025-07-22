@@ -70,6 +70,7 @@ StockInvestmentProject/
 ├── load_transactions.py
 ├── update_portfolio.py
 ├── analyze.py
+├── psuedo_realtime.py
 ├── requirements.txt
 ├── .gitignore
 └── README.md
