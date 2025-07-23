@@ -12,6 +12,7 @@ StockInvestmentProject/
 ├── update_portfolio.py
 ├── analyze.py
 ├── seed_investors.py
+├── master_etl.py
 ├── psuedo_realtime.py
 ├── requirements.txt
 ├── .gitignore
