@@ -11,6 +11,7 @@ StockInvestmentProject/
 ├── load_transactions.py
 ├── update_portfolio.py
 ├── analyze.py
+├── seed_investors.py
 ├── psuedo_realtime.py
 ├── requirements.txt
 ├── .gitignore
@@ -36,13 +37,25 @@ StockInvestmentProject/
 
    This will create a big file (transactions.csv with 10,000+ rows).
 
-4. Load transactions into DB:
+4. Seed Investors:
+   Run,
+   seed_investors.py
+
+   This: Connects to your stock_investments DB
+
+         Inserts 5 dummy investors if they don’t exist
+
+         Uses INSERT IGNORE so it won’t fail if they’re already there
+
+         Prints a success message
+
+5. Load transactions into DB:
 
    Run,
 
    'python load_transactions.py'
 
-5. Update portfolios:
+6. Update portfolios:
 
    Run,
 
@@ -50,7 +63,7 @@ StockInvestmentProject/
 
     This: Runs a JOIN & subquery. Calculates total quantity, average buy price, risk score. Stores it in portfolios.
 
-6. Analyze and Visualize:
+7. Analyze and Visualize:
 
    Run,
 
