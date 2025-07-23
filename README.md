@@ -128,6 +128,23 @@ StockInvestmentProject/
     Plots a bar chart with seaborn.
     Opens a window so you see who owns what stocks.
 
+   ## 🚀 Run the entire ETL pipeline:
+
+
+python master_etl.py
+
+This will:
+
+-Generate new dummy transactions
+
+-Seed investors (safe for re-runs)
+
+-Load transactions to MySQL
+
+-Update portfolio risk scores
+
+-Show analysis plots
+
 
 
 **✅Batch Mode**
