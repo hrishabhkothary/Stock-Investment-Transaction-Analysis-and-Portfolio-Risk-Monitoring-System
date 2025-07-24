@@ -65,6 +65,14 @@ StockInvestmentProject/
 
              ✅ Now run SELECT * FROM investors; — confirm!
 
+             🟢 Key Rule
+             Foreign Key means:
+             ✅ transactions.investor_id must match investors.investor_id or insert fails.
+
+             So:
+
+             If you generate new IDs — adjust both seed_investors.py AND generate_dummy_data.py
+
 5. Load transactions into DB:
 
    Run,
