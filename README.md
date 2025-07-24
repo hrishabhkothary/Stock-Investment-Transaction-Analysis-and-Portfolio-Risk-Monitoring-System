@@ -67,9 +67,12 @@ StockInvestmentProject/
 ├── create_tables.sql
 ├── generate_dummy_data.py
 ├── transactions.csv
+├── constants.py
+├── seed_investors.py
 ├── load_transactions.py
 ├── update_portfolio.py
 ├── analyze.py
+├── master_etl.py
 ├── psuedo_realtime.py
 ├── requirements.txt
 ├── .gitignore
