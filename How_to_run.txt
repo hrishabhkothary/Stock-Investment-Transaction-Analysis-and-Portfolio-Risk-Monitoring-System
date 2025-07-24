@@ -2,6 +2,7 @@ HOW TO RUN:
 
 Clone this repo: git clone https://github.com/hrishabhkothary/Stock-Investment-Transaction-Analysis-and-Portfolio-Risk-Monitoring-System.git
 The final Project tree should look like:
+
 StockInvestmentProject/
 │
 ├── db_config.py
