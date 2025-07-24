@@ -1,0 +1,179 @@
+📌 What pseudo_realtime.py does:
+
+In this kind of stock/transactions pipeline, pseudo_realtime.py is:
+
+1. A simulation script.
+
+2. It mimics how new transactions arrive in “near-real time.”
+
+3. It continuously appends new rows to your transactions table (or your CSV) every few seconds/minutes.
+
+4. It calls the same DB connection (db_config.py) to push rows one by one or in small batches.
+
+- So it simulates a real trading feed — think:
+
+   'Streaming new transactions → Insert → Portfolio gets updated → Reports refresh'
+
+
+***********************************************************************************************************************************************************************************************************
+
+
+✅ When should we run pseudo_realtime.py?
+
+We run it:
+
+1️⃣ AFTER your main tables exist.
+
+So, run:
+
+1. create_tables.sql
+
+2. seed_investors.py
+
+3. load_transactions.py
+
+4. update_portfolio.py (or master_etl.py)
+
+
+2️⃣ Then run pseudo_realtime.py in parallel or in another terminal:
+
+'python pseudo_realtime.py'
+
+
+3️⃣ It will keep inserting new transactions in loop (or on a schedule).
+
+
+4️⃣ You can then run 'update_portfolio.py' again periodically or make it watch for new data — so your portfolio risk stays up to date.
+
+
+***********************************************************************************************************************************************************************************************************
+
+✅ This is how we simulate:
+
+
+
+Batch mode: load_transactions.py inserts 10,000 rows once.
+
+Pseudo real-time: pseudo_realtime.py keeps adding rows forever.
+
+📌 When do we stop it?
+
+When you’re done demonstrating or testing:
+
+Just Ctrl + C in the terminal to stop it.
+
+The data stays in MySQL.
+
+
+***********************************************************************************************************************************************************************************************************
+
+✅ Typical run order (FULL)
+
+Batch mode:
+
+
+mysql -u root -p
+SOURCE create_tables.sql;
+python seed_investors.py
+python generate_dummy_data.py
+python load_transactions.py
+python update_portfolio.py
+python analyze.py
+
+
+Pseudo real-time mode:
+
+# In Terminal 1
+python pseudo_realtime.py
+
+# In Terminal 2 (periodically)
+python update_portfolio.py
+
+# Or watch your DB in real-time!
+
+
+***********************************************************************************************************************************************************************************************************
+
+✅ Where does db_config.py fit in?
+
+➡️ pseudo_realtime.py also says:
+
+'from db_config import get_engine'
+
+   So it reuses the same DB connection.
+
+👉 pseudo_realtime.py NEEDS:
+
+-investors to exist
+
+-transactions to exist
+
+-investor_id values in the dummy rows to match seeded IDs.
+
+
+***********************************************************************************************************************************************************************************************************
+
+✅ How to test it
+
+# 1. Make sure investors table has correct IDs:
+      SELECT * FROM investors;
+
+# 2. Make sure your pseudo_realtime.py uses only those IDs:
+      INVESTOR_IDS = [1001, 1002, 1003, 1004, 1005]
+
+# 3. Run it:
+      python pseudo_realtime.py
+
+
+Check your transactions table:
+
+      SELECT COUNT(*) FROM transactions;
+
+      The count should keep going up.
+
+✅ Wrap up:
+
+pseudo_realtime.py → For demo, stress test, simulating live feed.
+
+Run order:
+
+Always AFTER schema + initial seed + first batch load.
+
+
+✅ How this works
+
+Runs forever until you Ctrl + C.
+
+Every 3 seconds, generates 1 new random transaction.
+
+Uses only investor IDs 1001–1005 → So FK always valid.
+
+Uses db_config.py → same connection, so always in sync.
+
+✅ How to run
+
+1️⃣ Make sure:
+
+create_tables.sql run ✅
+
+seed_investors.py run ✅
+
+transactions table exists ✅
+
+2️⃣ Run your batch:
+
+python load_transactions.py
+
+3️⃣ Now run:
+
+python pseudo_realtime.py
+
+4️⃣ Open a second terminal, run:
+
+python update_portfolio.py
+
+or re-run analyze.py — you’ll see new live data!
+
+✅ Stop anytime
+
+Ctrl + C in the terminal → the script stops adding new rows.
