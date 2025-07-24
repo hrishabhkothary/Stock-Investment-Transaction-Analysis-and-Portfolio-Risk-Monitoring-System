@@ -12,6 +12,7 @@ StockInvestmentProject/
 ├── update_portfolio.py
 ├── analyze.py
 ├── seed_investors.py
+├── constants.py
 ├── master_etl.py
 ├── psuedo_realtime.py
 ├── requirements.txt
@@ -50,6 +51,20 @@ StockInvestmentProject/
 
          Prints a success message
 
+         If seed_investors.py doesn’t work:
+
+         In sql
+
+          -- Run manually to verify:
+             INSERT IGNORE INTO investors (investor_id, name) VALUES
+             (1001, 'Investor 1001'),
+             (1002, 'Investor 1002'),
+             (1003, 'Investor 1003'),
+             (1004, 'Investor 1004'),
+             (1005, 'Investor 1005');
+
+             ✅ Now run SELECT * FROM investors; — confirm!
+
 5. Load transactions into DB:
 
    Run,
@@ -71,6 +86,31 @@ StockInvestmentProject/
   'python analyze.py'
 
    This: Pulls portfolios data. Plots a bar chart with seaborn. Opens a window so you see who owns what stocks.
+
+8. Else Run:
+
+   master_etl.py
+
+   This runs all the scripts at a time.
+
+
+✅ Perfect run order:
+
+python generate_dummy_data.py
+
+python seed_investors.py
+
+python load_transactions.py
+
+python update_portfolio.py
+
+python analyze.py
+
+✅ OR:
+
+
+python master_etl.py
+
 
 ✅Batch Mode:
 
