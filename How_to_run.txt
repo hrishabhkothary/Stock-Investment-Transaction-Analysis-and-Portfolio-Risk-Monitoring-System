@@ -40,8 +40,10 @@ StockInvestmentProject/
    This will create a big file (transactions.csv with 10,000+ rows).
 
 4. Seed Investors:
-   Run,
-   seed_investors.py
+   
+    Run,
+   
+   'seed_investors.py'
 
    This: Connects to your stock_investments DB
 
@@ -115,6 +117,9 @@ python update_portfolio.py
 python analyze.py
 
 ✅ OR:
+
+
+Run the entire ETL Pipeline
 
 
 python master_etl.py
