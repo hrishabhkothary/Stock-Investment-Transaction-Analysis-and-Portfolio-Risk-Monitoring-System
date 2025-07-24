@@ -1,0 +1,89 @@
+📌 What db_config.py does:
+
+db_config.py is NOT meant to run independently.
+It defines one thing:
+
+
+
+def get_engine():
+    # connection settings
+    return engine
+
+This means:
+
+-It only provides a reusable database connection.
+
+-It does NOT do any work by itself when run directly.
+
+-It’s imported by other Python scripts:
+
+-seed_investors.py → from db_config import get_engine
+
+-load_transactions.py → from db_config import get_engine
+
+-update_portfolio.py → same
+
+-analyze.py → same
+
+✅ So every script that needs the database connection calls get_engine().
+
+⚡ What happens if you run db_config.py alone?
+If you run:
+
+python db_config.py
+
+👉 Nothing will happen (unless you added a print at the bottom).
+
+It just defines a function — no side effects.
+
+✅ Where it’s embedded:
+
+| File                   | How `db_config.py` is used                |
+| ---------------------- | ----------------------------------------- |
+| `seed_investors.py`    | Uses `get_engine()` to insert investors   |
+| `load_transactions.py` | Uses `get_engine()` to push CSV data      |
+| `update_portfolio.py`  | Uses `get_engine()` to update risk table  |
+| `analyze.py`           | Uses `get_engine()` to run SELECT queries |
+
+
+✅ Why it’s good practice:
+
+Using a single db_config.py:
+
+-Keeps credentials in one place.
+
+-Makes sure you don’t duplicate connection code.
+
+-Easy to update password/host in one file.
+
+📌 Conclusion:
+
+✔️ You should NOT run db_config.py directly.
+
+✔️ Other files automatically call it to get a live connection.
+
+✔️ If db_config.py has a wrong password or host, ALL scripts will fail — so keep it correct!
+
+✅ Check if it works
+Do this quick test:
+
+
+# Add at bottom of db_config.py
+
+if __name__ == "__main__":
+    engine = get_engine()
+    print(engine)
+
+Then:
+
+
+python db_config.py
+
+👉 If it prints <sqlalchemy.engine>, your connection string is valid.
+
+If it errors → fix your host/user/pass.
+
+🔑 In short:
+
+db_config.py is NOT a main script, but the core connector your project needs.
+Keep it clean — and your pipeline stays robust!
