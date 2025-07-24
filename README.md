@@ -63,6 +63,10 @@ The system runs in batch mode (hourly or daily) or can be extended for real-time
    
 StockInvestmentProject/
 │
+├── txtfiles
+    │
+    ├── details_db_config.txt
+    ├── details_psuedo_realtime.txt
 ├── db_config.py
 ├── create_tables.sql
 ├── generate_dummy_data.py
