@@ -1,19 +1,19 @@
 from sqlalchemy import text
 from db_config import get_engine
+from constants import INVESTOR_IDS
 
 def seed_investors():
     engine = get_engine()
-    sql = """
+    values = ",\n".join(
+        f"({id}, 'Investor {id}')" for id in INVESTOR_IDS
+    )
+    sql = f"""
     INSERT IGNORE INTO investors (investor_id, name) VALUES
-        (1001, 'Investor One'),
-        (1002, 'Investor Two'),
-        (1003, 'Investor Three'),
-        (1004, 'Investor Four'),
-        (1005, 'Investor Five');
+    {values};
     """
     with engine.connect() as conn:
         conn.execute(text(sql))
-        print("✔️ Investors seeded successfully!")
+        print(f"✔️ Investors seeded successfully: {INVESTOR_IDS}")
 
 if __name__ == "__main__":
     seed_investors()
