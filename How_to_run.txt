@@ -5,15 +5,19 @@ The final Project tree should look like:
 
 StockInvestmentProject/
 │
+├── txtfiles
+    │
+    ├── details_db_config.txt
+    ├── details_psuedo_realtime.txt
 ├── db_config.py
 ├── create_tables.sql
 ├── generate_dummy_data.py
 ├── transactions.csv
+├── constants.py
+├── seed_investors.py
 ├── load_transactions.py
 ├── update_portfolio.py
 ├── analyze.py
-├── seed_investors.py
-├── constants.py
 ├── master_etl.py
 ├── psuedo_realtime.py
 ├── requirements.txt
